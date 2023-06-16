@@ -6,21 +6,21 @@
  * @FilePath: /sense-earth-v3/Users/douruihuan.vendor/Desktop/myPro/my-vue-app/vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import path, { resolve } from 'path'
+import { resolve } from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
-export default ({ command, mode }) => {
+export default ({ mode }) => {
     const env: Partial<ImportMetaEnv> = loadEnv(mode, process.cwd())
     return defineConfig({
         plugins: [
             vue(),
             createHtmlPlugin(),
             Components({
-                resolvers: [AntDesignVueResolver({ importStyle: "less", resolveIcons: true })]
+                resolvers: [AntDesignVueResolver({ importStyle: 'less', resolveIcons: true })]
             }),
             AutoImport({
                 imports: ['vue', 'vue-router'],
@@ -40,7 +40,6 @@ export default ({ command, mode }) => {
                 '~@': resolve(__dirname, './src')
             }
         },
-
         css: {
             loaderOptions: {
                 less: {
